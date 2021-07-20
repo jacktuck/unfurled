@@ -24,6 +24,7 @@ test('should detect title, description and keywords', async () => {
 
   const expected = {
     favicon: 'http://localhost/favicon.ico',
+    author: 'abc',
     description: 'aaa',
     keywords: ['a', 'b', 'c'],
     title: 'ccc'
@@ -40,25 +41,6 @@ test('should detect title, description and keywords even when they are in the bo
     })
 
   const result = await unfurl('http://localhost/html/basic-body')
-
-  const expected = {
-    favicon: 'http://localhost/favicon.ico',
-    description: 'aaa',
-    keywords: ['a', 'b', 'c'],
-    title: 'ccc'
-  }
-
-  expect(result).toEqual(expected)
-})
-
-test('should detect title, description and keywords', async () => {
-  nock('http://localhost')
-    .get('/html/basic')
-    .replyWithFile(200, __dirname + '/basic.html', {
-      'Content-Type': 'text/html'
-    })
-
-  const result = await unfurl('http://localhost/html/basic')
 
   const expected = {
     favicon: 'http://localhost/favicon.ico',
